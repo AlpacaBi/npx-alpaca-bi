@@ -1,6 +1,6 @@
 {
   "name": "alpaca-bi",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Alpaca Bi Info",
   "main": "index.js",
   "bin": {
