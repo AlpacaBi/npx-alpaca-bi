@@ -41,7 +41,9 @@ lmap.set("english",{
     question2:`-Contact me through ${chalk.green.bold("WeChat")}?`,
     answer2:"Scan the wechat qrcode to add my WeChat!!",
     question3:`-${chalk.yellow.bold("Banana dance!!!")}`,
-    answer3:"\nbanana!!!!\n",
+    answer3:"\nBanana!!!!\n",
+    questionBlog:`-Skip to ${chalk.hex("#f90").bold("Alpaca Blog")}`,
+    answerBlog:"\nWelcome to my blog\n",
     question4:"-Just quit.",
     answer4:"\nBye!!!!\n",
 
@@ -71,11 +73,15 @@ lmap.set("chinese",{
     answer2:"扫码加我微信!!",
     question3:`-${chalk.yellow.bold("看香蕉君跳舞")}`,
     answer3:"\n气氛逐渐蕉♂灼♂\n",
+    questionBlog:`-进入${chalk.hex("#f90").bold("Alpaca Blog")}`,
+    answerBlog:"\n欢迎来看我的博客\n",
     question4:"-退出",
     answer4:"\n走好不送\n",
 
     alpacaAIMessage:`-和${chalk.hex("#f90").bold("Alpaca AI")}聊天`
 })
+
+let sleep = time => new Promise( resolve => setTimeout(resolve, time * 1000) )
 
 const questions1 = [
     {
@@ -155,8 +161,6 @@ prompt(questions1).then(answer => {
         }
     ];
 
-    
-
     const questions2 = [
         {
             type: "list",
@@ -165,26 +169,20 @@ prompt(questions1).then(answer => {
             choices: [
                 {
                     name: lmap.get(language).alpacaAIMessage,
-                    value: () => {
-                        setTimeout(()=>{
-                            console.log(`${new Date().toLocaleString( )} 已成功连入Alpaca AI服务器,输入${chalk.red.bold("exit")}即可退出`);
-                            setTimeout(()=>{
-                                console.log(`${chalk.hex("#f90").bold("Alpaca AI")}: 你好啊，我是Alpaca AI,一个人工智能，你可以打字和我聊天！！！！`);
-                                setTimeout(()=>{
-                                    console.log(`${chalk.hex("#f90").bold("Alpaca AI")}: 我带有脏话检测功能，所以请文明发言哦！！！！\n\n`);
-                                    prompt(alpacaAI).then(() => {
-                                        setTimeout(()=>{
-                                            clear()
-                                            console.log("\n\n\n")
-                                            console.log(info);
-                                            prompt(questions2).then(answer => answer.action());
-                                        },1500)
-                                    })
-                                },1000)
-                            },1000)
-                        },1000)
-                        
-                        
+                    value: async() => {
+                        await sleep(2)
+                        console.log(`${new Date().toLocaleString( )} 已成功连入Alpaca AI服务器,输入${chalk.red.bold("exit")}即可退出`)
+                        await sleep(1)
+                        console.log(`${chalk.hex("#f90").bold("Alpaca AI")}: 你好啊，我是Alpaca AI,一个人工智能，你可以打字和我聊天！！！！`)
+                        await sleep(1)
+                        console.log(`${chalk.hex("#f90").bold("Alpaca AI")}: 我带有脏话检测功能，所以请文明发言哦！！！！\n\n`)
+                        await prompt(alpacaAI)
+                        await sleep(1.5)
+                        clear()
+                        console.log("\n\n\n")
+                        console.log(info)
+                        let answer = await prompt(questions2)
+                        answer.action()
                     }
                 },
                 {
@@ -192,11 +190,7 @@ prompt(questions1).then(answer => {
                     value: () => {
                         open("mailto:biguokang@outlook.com");
                         console.log(lmap.get(language).answer1);
-                        setTimeout(()=>{
-                            console.log("\n\n\n")
-                            console.log(info);
-                            prompt(questions2).then(answer => answer.action());
-                        },1500)
+                        skipToQuestions2() 
                     }
                 },
                 {
@@ -205,11 +199,15 @@ prompt(questions1).then(answer => {
                         console.log(lmap.get(language).answer2)
                         const url = 'https://u.wechat.com/MI8g1d4fSdEntqOdCrp-DU8';
                         qrcode.generate(url,{small:true});
-                        setTimeout(()=>{
-                            console.log("\n\n\n")
-                            console.log(info);
-                            prompt(questions2).then(answer => answer.action());
-                        },1500)
+                        skipToQuestions2()
+                    }
+                },
+                {
+                    name: lmap.get(language).questionBlog,
+                    value: () => {
+                        console.log(lmap.get(language).answerBlog);
+                        open("https://blog.alpaca.run")
+                        skipToQuestions2()
                     }
                 },
                 {
@@ -217,11 +215,7 @@ prompt(questions1).then(answer => {
                     value: () => {
                         console.log(lmap.get(language).answer3);
                         open("https://cdn.alpaca.run/js/banana.html")
-                        setTimeout(()=>{
-                            console.log("\n\n\n")
-                            console.log(info);
-                            prompt(questions2).then(answer => answer.action());
-                        },1500)
+                        skipToQuestions2()
                     }
                 },
                 {
@@ -235,6 +229,13 @@ prompt(questions1).then(answer => {
         }
     ];
 
+    let skipToQuestions2 = async() => {
+        await sleep(1.5)
+        console.log("\n\n\n")
+        console.log(info);
+        let answer = await prompt(questions2)
+        answer.action()  
+    }
 
     prompt(questions2).then(answer => answer.action());
 
