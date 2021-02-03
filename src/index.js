@@ -130,8 +130,8 @@ const main = async() => {
     );
 
     // 显示简历
-
     console.log(info);
+
     const alpacaAI = [
         {
             type: 'input',
@@ -186,34 +186,39 @@ const main = async() => {
                 },
                 {
                     name: lmap.get(language).question1,
-                    value: () => {
+                    value: async() => {
                         open("mailto:biguokang@outlook.com");
                         console.log(lmap.get(language).answer1);
+                        await sleep(3)
                         skipToQuestions2() 
                     }
                 },
                 {
                     name: lmap.get(language).question2,
-                    value: () => {
+                    value: async() => {
+                        clear()
                         console.log(lmap.get(language).answer2)
                         const url = 'https://u.wechat.com/MI8g1d4fSdEntqOdCrp-DU8';
                         qrcode.generate(url,{small:true});
+                        await sleep(5)
                         skipToQuestions2()
                     }
                 },
                 {
                     name: lmap.get(language).questionBlog,
-                    value: () => {
+                    value: async() => {
                         console.log(lmap.get(language).answerBlog);
                         open("https://blog.alpaca.run")
+                        await sleep(3)
                         skipToQuestions2()
                     }
                 },
                 {
                     name: lmap.get(language).question3,
-                    value: () => {
+                    value: async() => {
                         console.log(lmap.get(language).answer3);
                         open("https://cdn.alpaca.run/js/banana.html")
+                        await sleep(3)
                         skipToQuestions2()
                     }
                 },
@@ -229,7 +234,7 @@ const main = async() => {
     ];
 
     let skipToQuestions2 = async() => {
-        await sleep(1.5)
+        clear()
         console.log("\n\n\n")
         console.log(info);
         let answer = await prompt(questions2)
