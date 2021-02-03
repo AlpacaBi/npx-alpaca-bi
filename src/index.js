@@ -1,6 +1,3 @@
-#!/usr/bin/env node
-
-'use strict'
 
 const boxen = require("boxen");
 const chalk = require("chalk");
@@ -102,7 +99,9 @@ const questions1 = [
 ];
 
 
-prompt(questions1).then(answer => {
+const main = async() => {
+
+    let answer = await prompt(questions1)
 
     let language = answer.language
 
@@ -130,9 +129,9 @@ prompt(questions1).then(answer => {
         }
     );
 
+    // 显示简历
+
     console.log(info);
-
-
     const alpacaAI = [
         {
             type: 'input',
@@ -237,8 +236,12 @@ prompt(questions1).then(answer => {
         answer.action()  
     }
 
-    prompt(questions2).then(answer => answer.action());
+    let answer2 = await prompt(questions2);
 
-});
+    answer2.action()
+}
+
+main()
+
 
 
