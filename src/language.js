@@ -43,7 +43,7 @@ languageMap.set("english",{
     generalInfoAddress: '  ADDRESS ',
     generalInfoAddress2: ' GuangZhou, GuangDong China     ',
     generalInfoCareer: '   CAREER ',
-    generalInfoCareer2: ' Front End Developer            ',
+    generalInfoCareer2: ` Front End Developer(3 year's)  `,
 
     socialLinks: ' «             SOCIAL LINKS             » ',
     socialLinksMail: '     MAIL ',
@@ -93,8 +93,8 @@ languageMap.set("chinese",{
     generalInfoBirth2: ' 1995/01/30                     ',
     generalInfoAddress: '     城市 ',
     generalInfoAddress2: ' 广东广州                       ',
-    generalInfoCareer: '     职位 ',
-    generalInfoCareer2: ' web前端工程师                  ',
+    generalInfoCareer: '     工作 ',
+    generalInfoCareer2: ' web前端工程师(3年)             ',
 
     socialLinks: ' «               联系方式               » ',
     socialLinksMail: '     邮件 ',
