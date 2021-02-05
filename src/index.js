@@ -110,7 +110,7 @@ const main = async() => {
                         console.log(languageMap.get(language).answer2)
                         const url = 'https://u.wechat.com/MI8g1d4fSdEntqOdCrp-DU8';
                         qrcode.generate(url,{small:true});
-                        await sleep(5)
+                        await sleep(10)
                         skipToQuestions2()
                     }
                 },
