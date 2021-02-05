@@ -115,6 +115,15 @@ const main = async() => {
                     }
                 },
                 {
+                    name: languageMap.get(language).questionLinkedIn,
+                    value: async() => {
+                        console.log(languageMap.get(language).answerLinkedIn);
+                        open("https://linkedin.com/in/AlpacaBi")
+                        await sleep(3)
+                        skipToQuestions2()
+                    }
+                },
+                {
                     name: languageMap.get(language).questionBlog,
                     value: async() => {
                         console.log(languageMap.get(language).answerBlog);

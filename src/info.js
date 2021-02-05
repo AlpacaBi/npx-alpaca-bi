@@ -48,7 +48,7 @@ const getInfo = language => {
     h2(info.socialLinksGithub) + r2(' github.com/AlpacaBi            '),
     h1(info.socialLinksBlog) + r1(' blog.alpaca.run                '),
     h2(info.socialLinksWechat) + r2(' workbiguokang                  '),
-    h1(info.socialLinkslLinkedin) + r1(' linkedin.com/in/AlpacaBi       '),
+    h1(info.socialLinkslLinkedIn) + r1(' linkedin.com/in/AlpacaBi       '),
     EMPTY_ROW,
     cc(info.professionalSkills),
   //   EMPTY_ROW,
