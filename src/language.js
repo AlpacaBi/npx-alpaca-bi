@@ -2,6 +2,7 @@ const chalk = require("chalk");
 
 const languageMap = new Map()
 
+// English
 languageMap.set("english",{
     name: chalk.bold.green("             Alpaca Bi Resume"),
     work: `${chalk.white("Frone-end Engineer at")} ${chalk
@@ -32,9 +33,29 @@ languageMap.set("english",{
     question4:"-Just quit.",
     answer4:"\nBye!!!!\n",
 
-    alpacaAIMessage:`-Chat with ${chalk.hex("#f90").bold("Alpaca AI")}(sorry, only support Chinese)`
+    alpacaAIMessage:`-Chat with ${chalk.hex("#f90").bold("Alpaca AI")}(sorry, only support Chinese)`,
+
+    generalInfo: ' «             GENERAL INFO             » ',
+    generalInfoName: '     NAME ',
+    generalInfoName2: ' Alpaca Bi                      ',
+    generalInfoBirth: '    BIRTH ',
+    generalInfoBirth2: ' 1995/01/30                     ',
+    generalInfoAddress: '  ADDRESS ',
+    generalInfoAddress2: ' GuangZhou, GuangDong China     ',
+    generalInfoCareer: '   CAREER ',
+    generalInfoCareer2: ' Front End Developer            ',
+
+    socialLinks: ' «             SOCIAL LINKS             » ',
+    socialLinksMail: '     MAIL ',
+    socialLinkslLinkedin: ' LINKEDIN ',
+    socialLinksGithub: '   GITHUB ',
+    socialLinksBlog: '     BLOG ',
+    socialLinksWechat: '   WECHAT ',
+
+    professionalSkills: ' «          PROFESSIONAL SKILLS         » '
 })
 
+// Chinese
 languageMap.set("chinese",{
     name: chalk.bold.green("            Alpaca Bi个人简历"),
     work: `${chalk.white("在")}${chalk.hex("#FF0000").bold("Vtron")}${chalk.white("担任前端工程师")}`,
@@ -63,7 +84,26 @@ languageMap.set("chinese",{
     question4:"-退出",
     answer4:"\n走好不送\n",
 
-    alpacaAIMessage:`-和${chalk.hex("#f90").bold("Alpaca AI")}聊天`
+    alpacaAIMessage:`-和${chalk.hex("#f90").bold("Alpaca AI")}聊天`,
+
+    generalInfo: ' «               基本信息               » ',
+    generalInfoName: '     姓名 ',
+    generalInfoName2: ' 毕国康                         ',
+    generalInfoBirth: ' 出生年月 ',
+    generalInfoBirth2: ' 1995/01/30                     ',
+    generalInfoAddress: '     城市 ',
+    generalInfoAddress2: ' 广东广州                       ',
+    generalInfoCareer: '     职位 ',
+    generalInfoCareer2: ' web前端工程师                  ',
+
+    socialLinks: ' «               联系方式               » ',
+    socialLinksMail: '     邮件 ',
+    socialLinkslLinkedin: '     领英 ',
+    socialLinksGithub: '   GITHUB ',
+    socialLinksBlog: '     博客 ',
+    socialLinksWechat: '     微信 ',
+
+    professionalSkills: ' «               个人技能               » '
 })
 
 module.exports = languageMap
